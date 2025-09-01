@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602137127031",
+    "project_id": "ecommerce-masum",
+    "storage_bucket": "ecommerce-masum.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602137127031:android:94374d6ba6f6ce8720fe72",
+        "android_client_info": {
+          "package_name": "com.example.ui_based_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChE3nd6kePtnDZ5PQuJ9EwTDkkvL1cPKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
