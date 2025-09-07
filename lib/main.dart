@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_based_ecommerce/app/app.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/utils/app_version.dart';
 
 import 'firebase_options.dart';
 
@@ -23,5 +24,6 @@ async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+  await AppVersion.getCurrentVersion();
   runApp(const CraftyBay());
 }

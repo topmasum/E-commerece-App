@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ui_based_ecommerce/app/extentions/localization_extension.dart';
-import 'package:ui_based_ecommerce/features/share/presentation/widget/language_change_switch.dart';
-//import 'package:ui_based_ecommerce/l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/utils/app_version.dart';
+import '../../../../app/extentions/assets_path.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-
+ static const String name='/';
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -14,12 +15,20 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-               Text(context.localization.hello),
-            LanguageChangeSwitch(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Spacer(),
+              SvgPicture.asset(AssetPath.logoSvg,width: 120,),
+              Spacer(),
+              CircularProgressIndicator(),
+              const SizedBox( height: 12),
+              Text('Version ${AppVersion.currentVersion}'),
+
+            ],
+          ),
         ),
       ),
     );
