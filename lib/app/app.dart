@@ -1,13 +1,10 @@
-import 'dart:ui';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
-//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:ui_based_ecommerce/app/controller/language_controller.dart';
 import 'package:ui_based_ecommerce/app_theme.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/screens/signUp.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/sign_in.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/slapsh_screes.dart';
 import 'package:ui_based_ecommerce/l10n/app_localizations.dart';
@@ -52,7 +49,10 @@ class _CraftyBayState extends State<CraftyBay> {
               screen= SplashScreen();
             }else if(Setting.name== SignIn.name){
               screen=SignIn();
+            }else if(Setting.name==SignUp.name){
+              screen=SignUp();
             }
+            return MaterialPageRoute(builder: (ctx)=> screen);
 
           },
         );

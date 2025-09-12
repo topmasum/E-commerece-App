@@ -13,4 +13,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get selectedLanguage => 'ভাষা নির্বাচন করুন';
+
+  @override
+  String get welcomeback => 'Welcome back bn';
+
+  @override
+  String get headline => 'Pleas enter your email and password bn';
 }

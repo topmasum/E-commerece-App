@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/screens/sign_in.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/utils/app_version.dart';
-import '../../../../app/extentions/assets_path.dart';
+import '../widegts/applogo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
- static const String name='/';
+  static const String name = '/';
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _moveToNextScreen();
+  }
+
+  Future<void> _moveToNextScreen() async {
+    await Future.delayed(Duration(seconds: 3));
+    Navigator.pushReplacementNamed(context, SignIn.name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Spacer(),
-              SvgPicture.asset(AssetPath.logoSvg,width: 120,),
+              App_logo(),
               Spacer(),
               CircularProgressIndicator(),
-              const SizedBox( height: 12),
+              const SizedBox(height: 12),
               Text('Version ${AppVersion.currentVersion}'),
-
             ],
           ),
         ),

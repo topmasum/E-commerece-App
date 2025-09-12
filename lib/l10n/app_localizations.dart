@@ -109,6 +109,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'selected Language'**
   String get selectedLanguage;
+
+  /// No description provided for @welcomeback.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get welcomeback;
+
+  /// No description provided for @headline.
+  ///
+  /// In en, this message translates to:
+  /// **'Pleas enter your email and password'**
+  String get headline;
 }
 
 class _AppLocalizationsDelegate

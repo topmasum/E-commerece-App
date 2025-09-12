@@ -1,4 +1,6 @@
 {
   "hello": "hello",
-  "selectedLanguage": "selected Language"
+  "selectedLanguage": "selected Language",
+  "welcomeback": "Welcome back",
+  "headline": "Pleas enter your email and password"
 }
