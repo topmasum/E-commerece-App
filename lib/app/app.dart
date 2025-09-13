@@ -7,6 +7,7 @@ import 'package:ui_based_ecommerce/app_theme.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/signUp.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/sign_in.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/slapsh_screes.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/screens/verify_otp.dart';
 import 'package:ui_based_ecommerce/l10n/app_localizations.dart';
 
 class CraftyBay extends StatefulWidget {
@@ -51,6 +52,9 @@ class _CraftyBayState extends State<CraftyBay> {
               screen=SignIn();
             }else if(Setting.name==SignUp.name){
               screen=SignUp();
+            }
+            else if(Setting.name==VerifyOtp.name){
+              screen=VerifyOtp();
             }
             return MaterialPageRoute(builder: (ctx)=> screen);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_based_ecommerce/app/extentions/localization_extension.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/screens/verify_otp.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/widegts/applogo.dart';
 
 class SignUp extends StatefulWidget {
@@ -91,7 +91,9 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void _onTapsignupButton() {}
+  void _onTapsignupButton() {
+    Navigator.pushNamed(context, VerifyOtp.name);
+  }
   void _ontapSigninbutton() {
     Navigator.pop(context);
   }
