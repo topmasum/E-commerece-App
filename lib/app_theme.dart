@@ -10,6 +10,10 @@ class AppTheme {
       titleLarge: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold
+      ),
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 22
       )
     )
   );

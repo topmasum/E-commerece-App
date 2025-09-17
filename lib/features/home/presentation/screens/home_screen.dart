@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_based_ecommerce/app/extentions/assets_path.dart';
 
 import '../widgets/app_bar_icon_button.dart';
+import '../widgets/home_App_Slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,9 +27,30 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(children: [SizedBox(height: 16), _buildSearchbar()]),
+        child: Column(children: [
+          SizedBox(height: 16),
+          _buildSearchbar(),
+          SizedBox(height: 16,),
+          homeBannerSlider(),
+          SizedBox(height: 16,),
+          _buildsectionHeader(
+            title: 'Categories',
+            onTapSeeAll: (){}
+          )
+        ]
+        ),
       ),
     );
+  }
+
+  Widget _buildsectionHeader({required String title, required VoidCallback onTapSeeAll }) {
+    return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title,style: Theme.of(context).textTheme.titleMedium,),
+            TextButton(onPressed: onTapSeeAll, child: Text('See All'))
+          ],
+        );
   }
 
   Widget _buildSearchbar() {
@@ -46,3 +68,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
