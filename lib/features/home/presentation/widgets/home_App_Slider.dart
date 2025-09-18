@@ -22,7 +22,6 @@ class _homeBannerSliderState extends State<homeBannerSlider> {
               _currentindex.value = index;
             },
           ),
-
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {

@@ -10,4 +10,10 @@ class MainNavController extends GetxController{
     _selectedIndex=index;
     update();
   }
+  void moveToCategory(){
+    changedIndex(1);
+}
+void moveToHome(){
+    changedIndex(0);
+}
 }

@@ -14,8 +14,15 @@ class AppTheme {
       titleMedium: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 22
-      )
-    )
+      ),
+    ),
+      appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        fontSize: 18,
+        color: Colors.black,
+        fontWeight: FontWeight.w500
+      ),
+  )
   );
   static ThemeData get DarkThemeData => ThemeData(
     colorSchemeSeed: Color(0xFF07ADAE),
