@@ -14,27 +14,32 @@ class CategoryListScreen extends StatefulWidget {
 class _CategoryListScreenState extends State<CategoryListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Categories'),
-        leading: BackButton(onPressed: () {
-          Get.find<MainNavController>().moveToHome();
-        }),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (_,__) => _backToHome(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Categories'),
+          leading: BackButton(onPressed: _backToHome),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8
+            ),
+            itemCount: 10,
+            itemBuilder: (context,index){
+              return FittedBox(child: ProductCategoryItem());
+            },
           ),
-          itemCount: 10,
-          itemBuilder: (context,index){
-            return FittedBox(child: ProductCategoryItem());
-          },
         ),
       ),
     );
   }
+  void _backToHome(){
+    Get.find<MainNavController>().moveToHome();
+}
 }
