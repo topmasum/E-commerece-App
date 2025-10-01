@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData get LightThemeData => ThemeData(
     colorSchemeSeed: Color(0xFF07ADAE),
-    //colorSchemeSeed: AppColor.themeColor
+     // colorSchemeSeed: AppColor.themeColor
     filledButtonTheme: _fillbuttontheme,
     inputDecorationTheme:_inputDecorartionTheme,
     textTheme: TextTheme(

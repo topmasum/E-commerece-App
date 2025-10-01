@@ -13,11 +13,11 @@ class BottemNavigationScreen extends StatefulWidget {
 }
 
 class _BottemNavigationScreenState extends State<BottemNavigationScreen> {
-  final List<Widget> _screens=[
+  final List<Widget> _screens = [
     HomeScreen(),
     CategoryListScreen(),
     HomeScreen(),
-    HomeScreen()
+    HomeScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _BottemNavigationScreenState extends State<BottemNavigationScreen> {
             ],
           ),
         );
-      }
+      },
     );
   }
 }

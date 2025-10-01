@@ -8,6 +8,7 @@ import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_
 import '../../../share/presentation/widget/product_category_item.dart';
 import '../widgets/app_bar_icon_button.dart';
 import '../widgets/home_App_Slider.dart';
+import '../widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,43 +30,80 @@ class _HomeScreenState extends State<HomeScreen> {
           AppBarIcon(onTap: () {}, iconData: Icons.notifications_active),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _buildSearchbar(),
-            const SizedBox(height: 16),
-            homeBannerSlider(),
-            const SizedBox(height: 16),
-            _buildsectionHeader(title: 'Categories', onTapSeeAll: () {
-              Get.find<MainNavController>().moveToCategory();
-            }),
-            _buildCategoriesItem(),
-            _buildsectionHeader(title: 'New', onTapSeeAll: () {}),
-            _buildsectionHeader(title: 'Popular', onTapSeeAll: () {}),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                _buildSearchbar(),
+                const SizedBox(height: 16),
+                homeBannerSlider(),
+                const SizedBox(height: 16),
+                _buildsectionHeader(
+                  title: 'Categories',
+                  onTapSeeAll: () {
+                    Get.find<MainNavController>().moveToCategory();
+                  },
+                ),
+                _buildCategoriesItem(),
+                _buildsectionHeader(title: 'New', onTapSeeAll: () {}),
+                _buildNewProductList(),
+                _buildsectionHeader(title: 'Popular', onTapSeeAll: () {}),
+                _buildPopularProductList(),
+                _buildsectionHeader(title: 'Special', onTapSeeAll: () {}),
+                _buildSpacialProductList(),
+
+              ],
+            ),
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildNewProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [1,2,3,59].map((e)=> ProductCard()).toList()
+      ),
+    );
+  }
+  Widget _buildPopularProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+          children: [1,2,3,59].map((e)=> ProductCard()).toList()
+      ),
+    );
+  }
+  Widget _buildSpacialProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+          children: [1,2,3,59].map((e)=> ProductCard()).toList()
       ),
     );
   }
 
   Widget _buildCategoriesItem() {
     return SizedBox(
-            height: 120,
-            child: ListView.separated(
-              itemCount: 10,
-              primary: false,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return ProductCategoryItem();
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(width: 10,);
-              },
-            ),
-          );
+      height: 120,
+      child: ListView.separated(
+        itemCount: 10,
+        primary: false,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return ProductCategoryItem();
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(width: 10);
+        },
+      ),
+    );
   }
 
   Widget _buildsectionHeader({
@@ -96,3 +134,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
