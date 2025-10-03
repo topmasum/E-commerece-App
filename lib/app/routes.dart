@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_based_ecommerce/features/products/product_list_screen.dart';
+import 'package:ui_based_ecommerce/features/products/products_deatils_screen.dart';
 
 import '../features/auth/presentation/screens/signUp.dart';
 import '../features/auth/presentation/screens/sign_in.dart';
@@ -22,6 +23,8 @@ MaterialPageRoute onGenerateRoute(RouteSettings Setting) {
   }else if (Setting.name == ProductListScreen.name) {
     final String Categoryname= Setting.arguments as String;
     screen = ProductListScreen(Categoryname: Categoryname);
+  }else if (Setting.name == ProductsDeatilsScreen.name) {
+    screen = ProductsDeatilsScreen();
   }
   return MaterialPageRoute(builder: (ctx) => screen);
 }

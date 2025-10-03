@@ -1,66 +1,67 @@
 import 'package:flutter/material.dart';
+import 'app_color.dart';
+import 'app_color.dart';  // make sure you import where AppColor is stored
 
 class AppTheme {
   static ThemeData get LightThemeData => ThemeData(
-    colorSchemeSeed: Color(0xFF07ADAE),
-     // colorSchemeSeed: AppColor.themeColor
-    filledButtonTheme: _fillbuttontheme,
-    inputDecorationTheme:_inputDecorartionTheme,
-    textTheme: TextTheme(
-      titleLarge: TextStyle(
-        fontSize: 28,
-        fontWeight: FontWeight.bold
+      colorSchemeSeed: AppColor.themeColor,
+      filledButtonTheme: _fillbuttontheme,
+      inputDecorationTheme:_inputDecorartionTheme,
+      textTheme: TextTheme(
+        titleLarge: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold
+        ),
+        titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22
+        ),
       ),
-      titleMedium: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 22
-      ),
-    ),
       appBarTheme: AppBarTheme(
-      titleTextStyle: TextStyle(
-        fontSize: 18,
-        color: Colors.black,
-        fontWeight: FontWeight.w500
-      ),
-  )
+        titleTextStyle: TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+            fontWeight: FontWeight.w500
+        ),
+      )
   );
+
   static ThemeData get DarkThemeData => ThemeData(
-    colorSchemeSeed: Color(0xFF07ADAE),
+    colorSchemeSeed: AppColor.themeColor,
     brightness: Brightness.dark,
     filledButtonTheme: _fillbuttontheme,
-    inputDecorationTheme: _inputDecorartionTheme
-
+    inputDecorationTheme: _inputDecorartionTheme,
   );
+
   static FilledButtonThemeData get _fillbuttontheme=> FilledButtonThemeData(
       style: FilledButton.styleFrom(
         fixedSize: Size.fromWidth(double.maxFinite),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         padding: EdgeInsets.symmetric(vertical: 12),
         textStyle: TextStyle(fontSize: 16, color: Colors.white),
-        backgroundColor: Color(0xFF07ADAE),
+        backgroundColor: AppColor.themeColor,
       )
   );
+
   static InputDecorationTheme get _inputDecorartionTheme=> InputDecorationTheme(
       contentPadding: EdgeInsets.symmetric(horizontal: 16),
       hintStyle: TextStyle(
-        fontWeight: FontWeight.w300
+          fontWeight: FontWeight.w300
       ),
       border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFF07ADAE),
+            color: AppColor.themeColor,
           )
       ),
       enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFF07ADAE),
+            color: AppColor.themeColor,
           )
       ),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFF07ADAE),
+            color: AppColor.themeColor,
           )
       )
-
-
   );
 }
