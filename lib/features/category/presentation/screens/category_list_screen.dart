@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/widget/product_category_item.dart';
 

@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:ui_based_ecommerce/features/category/presentation/screens/category_list_screen.dart';
 import 'package:ui_based_ecommerce/features/home/presentation/screens/home_screen.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
+import 'package:ui_based_ecommerce/features/wishlist/presentation/screens/wishlist_screen.dart';
 
 class BottemNavigationScreen extends StatefulWidget {
   static const String name = '/bottom-navbar';
@@ -17,7 +18,7 @@ class _BottemNavigationScreenState extends State<BottemNavigationScreen> {
     HomeScreen(),
     CategoryListScreen(),
     HomeScreen(),
-    HomeScreen(),
+    WishListScreen(),
   ];
   @override
   Widget build(BuildContext context) {

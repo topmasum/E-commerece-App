@@ -16,4 +16,7 @@ class MainNavController extends GetxController{
 void moveToHome(){
     changedIndex(0);
 }
+  void moveToWishlist(){
+    changedIndex(3);
+  }
 }

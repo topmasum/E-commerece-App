@@ -16,7 +16,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.Categoryname)),
       body: GridView.builder(
-        itemCount: 10,
+        itemCount: 12,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 8
