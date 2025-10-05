@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui_based_ecommerce/features/products/product_list_screen.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
+
+import '../../../home/presentation/widgets/product_card.dart';
 
 class WishListScreen extends StatefulWidget {
   const WishListScreen({super.key});
@@ -21,7 +22,17 @@ class _WishListScreenState extends State<WishListScreen> {
           title: Text('WishList'),
           leading: BackButton(onPressed: _backToHome),
         ),
-        body:ProductListScreen(Categoryname: ''),
+        body:GridView.builder(
+          itemCount: 12,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 8
+
+          ),
+          itemBuilder: (context, index) {
+            return FittedBox(child: ProductCard());
+          },
+        ),
       )
     
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:ui_based_ecommerce/features/carts/presentation/screens/cart.dart';
 import 'package:ui_based_ecommerce/features/category/presentation/screens/category_list_screen.dart';
 import 'package:ui_based_ecommerce/features/home/presentation/screens/home_screen.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
@@ -17,7 +18,7 @@ class _BottemNavigationScreenState extends State<BottemNavigationScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CategoryListScreen(),
-    HomeScreen(),
+    CartScreen(),
     WishListScreen(),
   ];
   @override
