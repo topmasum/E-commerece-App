@@ -13,6 +13,7 @@ import 'package:ui_based_ecommerce/l10n/app_localizations.dart';
 class CraftyBay extends StatefulWidget {
   const CraftyBay({super.key});
   static final LanguageController languageController = LanguageController();
+  static final GlobalKey<NavigatorState> navigatorKey= GlobalKey<NavigatorState>();
   @override
   State<CraftyBay> createState() => _CraftyBayState();
 }
@@ -30,6 +31,7 @@ class _CraftyBayState extends State<CraftyBay> {
 
       builder: (languageController) {
         return GetMaterialApp(
+          navigatorKey: CraftyBay.navigatorKey,
           debugShowCheckedModeBanner: false,
           localizationsDelegates: [
             AppLocalizations.delegate,
