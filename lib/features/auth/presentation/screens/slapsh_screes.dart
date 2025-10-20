@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/screens/signUp.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/utils/app_version.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/screen/bottem_navigation_screen.dart';
 import '../widegts/applogo.dart';
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, BottemNavigationScreen.name);
+    Navigator.pushReplacementNamed(context, SignUp.name);
   }
 
   @override
