@@ -1,18 +1,25 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:ui_based_ecommerce/features/auth/data/models/verifyotp_request_model.dart';
+import 'package:ui_based_ecommerce/features/auth/presentation/controllers/verifyOTP_controller.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/sign_in.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/widegts/applogo.dart';
+import 'package:ui_based_ecommerce/features/share/presentation/widget/snackbar_message.dart';
 
 class VerifyOtp extends StatefulWidget {
-  const VerifyOtp({super.key});
+  const VerifyOtp({super.key, required this.email});
   static const String name = '/verify-otp';
+  final String email;
   @override
   State<VerifyOtp> createState() => _VerifyOtpState();
 }
 
 class _VerifyOtpState extends State<VerifyOtp> {
   final TextEditingController _OTPController = TextEditingController();
+  final VerifyOTPController _verifyOTPController= Get.find<VerifyOTPController>();
   int _remainingSeconds = 120; // start from 120 sec
   Timer? _timer;
 
@@ -85,10 +92,18 @@ class _VerifyOtpState extends State<VerifyOtp> {
                 ),
 
                 const SizedBox(height: 16),
-                FilledButton(
-                  onPressed:
-                  _remainingSeconds > 0 ? _onTaploginButton : null, // disable if expired
-                  child: const Text('Verify'),
+                GetBuilder<VerifyOTPController>(
+                  builder: (controller) {
+                    return Visibility(
+                      visible: controller.verifyotpUpProgress==false,
+                      replacement: CircularProgressIndicator(),
+                      child: FilledButton(
+                        onPressed:
+                        _remainingSeconds > 0 ? _onTaploginButton : null, // disable if expired
+                        child: const Text('Verify'),
+                      ),
+                    );
+                  }
                 ),
                 const SizedBox(height: 16),
                 TextButton(
@@ -104,8 +119,19 @@ class _VerifyOtpState extends State<VerifyOtp> {
   }
 
   void _onTaploginButton() {
-    // handle OTP verification
+    _verifyotp();
   }
+
+  Future<void>_verifyotp() async{
+    VerifyOtpMOdel model= VerifyOtpMOdel(email: widget.email, otp: _OTPController.text);
+    final bool isSuccess = await _verifyOTPController.verifyOtp(model);
+  if(isSuccess){
+
+  }else{
+    showSnackBarMessage(context, _verifyOTPController.errorMessage!);
+  }
+
+}
 
   void _ontapGobacktoLoginbutton() {
     Navigator.pushNamedAndRemoveUntil(context, SignIn.name, (p) => false);
