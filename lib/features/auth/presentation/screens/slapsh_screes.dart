@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ui_based_ecommerce/app/controller/auth_controller.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/signUp.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/utils/app_version.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/screen/bottem_navigation_screen.dart';
@@ -20,6 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 3));
+    bool isUserLoggedIn= await Get.find<AuthController>().alreadyLoggedIn();
+    if(isUserLoggedIn){
+      await Get.find<AuthController>().loadUserData();
+    }
     Navigator.pushReplacementNamed(context, SignUp.name);
   }
 

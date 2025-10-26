@@ -123,7 +123,7 @@ class _SignUpState extends State<SignUp> {
     final bool isSuccess=await _signupScreenController.signUp(model);
     if(isSuccess){
       showSnackBarMessage(context, 'SignUp has been successful');
-      Navigator.pushNamed(context, VerifyOtp.name);
+      Navigator.pushNamed(context, VerifyOtp.name,arguments: _emailController.text.trim());
 
     }else{
       showSnackBarMessage(context, _signupScreenController.errorMessage!);

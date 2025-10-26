@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:ui_based_ecommerce/app/controller/auth_controller.dart';
 import 'package:ui_based_ecommerce/features/auth/data/models/verifyotp_request_model.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/controllers/verifyOTP_controller.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/screens/sign_in.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/widegts/applogo.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/widget/snackbar_message.dart';
+
+import '../../../share/presentation/screen/bottem_navigation_screen.dart';
 
 class VerifyOtp extends StatefulWidget {
   const VerifyOtp({super.key, required this.email});
@@ -95,7 +98,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                 GetBuilder<VerifyOTPController>(
                   builder: (controller) {
                     return Visibility(
-                      visible: controller.verifyotpUpProgress==false,
+                      visible: controller.verifyOtpInProgress==false,
                       replacement: CircularProgressIndicator(),
                       child: FilledButton(
                         onPressed:
@@ -126,7 +129,8 @@ class _VerifyOtpState extends State<VerifyOtp> {
     VerifyOtpMOdel model= VerifyOtpMOdel(email: widget.email, otp: _OTPController.text);
     final bool isSuccess = await _verifyOTPController.verifyOtp(model);
   if(isSuccess){
-
+    await Get.find<AuthController>().saveUserData(_verifyOTPController.userModel!, _verifyOTPController.accessToken!);
+    Navigator.pushNamedAndRemoveUntil(context, BottemNavigationScreen.name, (p)=> false);
   }else{
     showSnackBarMessage(context, _verifyOTPController.errorMessage!);
   }
