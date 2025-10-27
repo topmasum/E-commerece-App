@@ -5,6 +5,7 @@ import 'package:ui_based_ecommerce/features/auth/presentation/controllers/login_
 import 'package:ui_based_ecommerce/features/auth/presentation/controllers/signup_screen_controller.dart';
 import 'package:ui_based_ecommerce/features/auth/presentation/controllers/verifyOTP_controller.dart';
 import 'package:ui_based_ecommerce/features/home/presentation/controller/home_slider_controller.dart';
+import 'package:ui_based_ecommerce/features/share/presentation/controllers/category_controller.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
 
 class ControllerBinder extends Bindings{
@@ -18,6 +19,7 @@ class ControllerBinder extends Bindings{
     Get.put(VerifyOTPController());
     Get.put(LoginController());
     Get.put(HomeSliderController());
+    Get.put(CategoryController());
 
   }
 
