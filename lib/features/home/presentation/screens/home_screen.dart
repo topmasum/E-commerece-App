@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:ui_based_ecommerce/app/extentions/assets_path.dart';
+import 'package:ui_based_ecommerce/features/home/presentation/controller/home_slider_controller.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
 
 import '../../../share/presentation/widget/product_category_item.dart';
@@ -39,7 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 16),
                 _buildSearchbar(),
                 const SizedBox(height: 16),
-                homeBannerSlider(),
+                GetBuilder<HomeSliderController>(
+                  builder: (controller) {
+                    if(controller.sliderInProgress){
+                      return SizedBox(
+                        height: 180,
+                          child: CircularProgressIndicator());
+                    }
+                    return homeBannerSlider(sliders: controller.slider,);
+                  }
+                ),
                 const SizedBox(height: 16),
                 _buildsectionHeader(
                   title: 'Categories',

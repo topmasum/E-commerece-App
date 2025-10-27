@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_based_ecommerce/features/home/data/models/home_slider.dart';
 
 class homeBannerSlider extends StatefulWidget {
-  const homeBannerSlider({super.key});
+  const homeBannerSlider({super.key, required this.sliders});
+  final List<HomeSliderModel> sliders;
 
   @override
   State<homeBannerSlider> createState() => _homeBannerSliderState();
@@ -22,7 +24,7 @@ class _homeBannerSliderState extends State<homeBannerSlider> {
               _currentindex.value = index;
             },
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.sliders.map((sliders) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -31,9 +33,9 @@ class _homeBannerSliderState extends State<homeBannerSlider> {
                   decoration: BoxDecoration(
                     color: Color(0xFF07ADAE),
                     borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(image: NetworkImage(sliders.photoUrl),fit: BoxFit.cover)
                   ),
                   alignment: Alignment.center,
-                  child: Text('text $i', style: TextStyle(fontSize: 16.0)),
                 );
               },
             );
@@ -45,7 +47,7 @@ class _homeBannerSliderState extends State<homeBannerSlider> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for(int i =0 ;i<5 ;i++)
+                for(int i =0 ;i<widget.sliders.length ;i++)
                   Container(
                     width: 12,
                     height: 12,
