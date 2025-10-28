@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ui_based_ecommerce/features/products/product_list_screen.dart';
+import 'package:ui_based_ecommerce/features/share/data/models/category_model.dart';
 class ProductCategoryItem extends StatelessWidget {
   const ProductCategoryItem({
-    super.key,
+    super.key, required this.categoryModel,
   });
-
+final CategoryModel categoryModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.pushNamed(context, ProductListScreen.name, arguments: 'Electronics');
+        Navigator.pushNamed(context, ProductListScreen.name, arguments: categoryModel.title);
       },
       child: Column(
         spacing: 6,
@@ -21,13 +22,21 @@ class ProductCategoryItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16)
             )
             ,
-            child: Icon(Icons.computer,size: 32,color:Color(0xFF07ADAE) ,),
+            child: Image.network(categoryModel.icon,height: 32,width: 32,errorBuilder: (_,__,___){
+              return Icon(Icons.error_outline,size: 32,);
+            },),
           ),
-          Text('Electronics',style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          Text(_getText(categoryModel.title),style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Color(0xFF07ADAE)
           ),)
         ],
       ),
     );
+  }
+  String _getText(String text){
+    if(text.length<12){
+      return text;
+    }
+    return "${text.substring(0,9)}...";
   }
 }

@@ -18,7 +18,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
-      _categoryController.fetchCategories();
+      //_categoryController.fetchCategories();
       _scrollController.addListener(_loadmore);
     });
   }
@@ -53,17 +53,22 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
               child: Column(
                 children: [
                   Expanded(
-                    child: GridView.builder(
-                      controller: _scrollController,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                      ),
-                      itemCount: _categoryController.categoryList.length,
-                      itemBuilder: (context, index) {
-                        return FittedBox(child: ProductCategoryItem());
+                    child: RefreshIndicator(
+                      onRefresh: () async{
+                        _categoryController.refreshCategoryList();
                       },
+                      child: GridView.builder(
+                        controller: _scrollController,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                        ),
+                        itemCount: _categoryController.categoryList.length,
+                        itemBuilder: (context, index) {
+                          return FittedBox(child: ProductCategoryItem(categoryModel: _categoryController.categoryList[index],));
+                        },
+                      ),
                     ),
                   ),
                   if (_categoryController.getCategoryInProgress)

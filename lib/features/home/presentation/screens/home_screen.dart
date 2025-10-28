@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:ui_based_ecommerce/app/extentions/assets_path.dart';
 import 'package:ui_based_ecommerce/features/home/presentation/controller/home_slider_controller.dart';
+import 'package:ui_based_ecommerce/features/share/presentation/controllers/category_controller.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
+import 'package:ui_based_ecommerce/features/share/presentation/widget/centered_circuler_progress.dart';
 
 import '../../../share/presentation/widget/product_category_item.dart';
 import '../widgets/app_bar_icon_button.dart';
@@ -101,17 +103,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildCategoriesItem() {
     return SizedBox(
       height: 120,
-      child: ListView.separated(
-        itemCount: 10,
-        primary: false,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return ProductCategoryItem();
-        },
-        separatorBuilder: (context, index) {
-          return SizedBox(width: 10);
-        },
+      child: GetBuilder<CategoryController>(
+        builder: (controller) {
+          if(controller.isInitialLoading){
+            return CenteredCirculerProgress();
+          }
+          return ListView.separated(
+            itemCount: controller.categoryList.length>10 ? 10: controller.categoryList.length,
+            primary: false,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return ProductCategoryItem(categoryModel: controller.categoryList[index],);
+            },
+            separatorBuilder: (context, index) {
+              return SizedBox(width: 10);
+            },
+          );
+        }
       ),
     );
   }

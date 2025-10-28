@@ -9,6 +9,8 @@ import 'package:ui_based_ecommerce/features/home/presentation/screens/home_scree
 import 'package:ui_based_ecommerce/features/share/presentation/controllers/main_nav_controller.dart';
 import 'package:ui_based_ecommerce/features/wishlist/presentation/screens/wishlist_screen.dart';
 
+import '../controllers/category_controller.dart';
+
 class BottemNavigationScreen extends StatefulWidget {
   static const String name = '/bottom-navbar';
   const BottemNavigationScreen({super.key});
@@ -28,6 +30,7 @@ class _BottemNavigationScreenState extends State<BottemNavigationScreen> {
   void initState() {
     // TODO: implement initState
     Get.find<HomeSliderController>().getHomeSliders();
+    Get.find<CategoryController>().fetchCategories();
     super.initState();
   }
   @override
