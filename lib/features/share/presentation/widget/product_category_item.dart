@@ -10,7 +10,7 @@ final CategoryModel categoryModel;
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.pushNamed(context, ProductListScreen.name, arguments: categoryModel.title);
+        Navigator.pushNamed(context, ProductListScreen.name, arguments: categoryModel);
       },
       child: Column(
         spacing: 6,

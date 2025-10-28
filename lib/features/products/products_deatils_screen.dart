@@ -3,10 +3,12 @@ import 'package:ui_based_ecommerce/features/products/widgets/color_picker.dart';
 import 'package:ui_based_ecommerce/features/products/widgets/product_slider.dart';
 import 'package:ui_based_ecommerce/features/products/widgets/size_picker.dart';
 import 'package:ui_based_ecommerce/features/products/widgets/total_price_and_cart_section.dart';
+import 'package:ui_based_ecommerce/features/share/presentation/controllers/productDetals_controller.dart';
 import 'package:ui_based_ecommerce/features/share/presentation/widget/inc_decr_button.dart';
 
 class ProductsDeatilsScreen extends StatefulWidget {
-  const ProductsDeatilsScreen({super.key});
+  const ProductsDeatilsScreen({super.key, required this.productId});
+  final String productId ;
 
   static const String name = '/product-details-screen';
   @override
@@ -14,6 +16,14 @@ class ProductsDeatilsScreen extends StatefulWidget {
 }
 
 class _ProductsDeatilsScreenState extends State<ProductsDeatilsScreen> {
+  final ProductDetailsController _productDetailsController= ProductDetailsController();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _productDetailsController.fetchProductDetails(widget.productId);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;

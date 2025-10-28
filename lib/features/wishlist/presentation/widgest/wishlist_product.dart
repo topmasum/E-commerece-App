@@ -20,7 +20,7 @@ class _WishListProductsState extends State<WishListProducts> {
 
         ),
         itemBuilder: (context, index) {
-          return FittedBox(child: ProductCard());
+         // return FittedBox(child: ProductCard());
         },
       ),
     );
