@@ -6,6 +6,7 @@ class ProductDetailsModel {
   final String description;
   final List<String> photos;
   final double currentPrice;
+  final String rating='4.3';
 
   ProductDetailsModel({
     required this.id,
@@ -21,11 +22,11 @@ class ProductDetailsModel {
   factory ProductDetailsModel.fromJson(Map<String, dynamic> json) {
     return ProductDetailsModel(
       id: json['id'],
-      colors:List<String>.from(json['colors'].map((e) => e.toString())),
-      sizes: List<String>.from(json['sizes'].map((e) => e.toString())),
+      colors:List<String>.from(json['colors'].map((e) => e).toList()),
+      sizes: List<String>.from(json['sizes'].map((e) => e).toList()),
       title: json['title'],
       description: json['description'],
-      photos: List<String>.from(json['photos'].map((e) => e.toString())),
+      photos: List<String>.from(json['photos'].map((e) => e).toList()),
       currentPrice: json['currentPrice'],
     );
   }

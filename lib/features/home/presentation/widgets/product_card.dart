@@ -55,30 +55,51 @@ final ProductModel productModel;
                     ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${tkSign}${productModel.currentPrice}',style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF07ADAE)
-                        ),),
-                        Wrap(
+                        Expanded(
+                          child: Text(
+                            '${tkSign}${productModel.currentPrice}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF07ADAE),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(width: 4),
+
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Icons.star,size: 18,color: Colors.amber,),
-                            Text(productModel.rating.toString())
+                            const Icon(Icons.star, size: 16, color: Colors.amber),
+                            Text(
+                              productModel.rating.toString(),
+                              style: const TextStyle(fontSize: 12),
+                            ),
                           ],
                         ),
+
+                        const SizedBox(width: 4),
+
                         Card(
-                          color:Color(0xFF07ADAE) ,
+                          color: const Color(0xFF07ADAE),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4)
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2),
-                            child: Icon(Icons.favorite_outline,size: 14,color: Colors.white,),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2),
+                            child: Icon(
+                              Icons.favorite_outline,
+                              size: 14,
+                              color: Colors.white,
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     )
+
                   ],
                 ),
               ),

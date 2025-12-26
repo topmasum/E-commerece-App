@@ -13,4 +13,6 @@ class Urls {
 
   static String productDetailsUrl(String productId) =>
       "$_baseUrl/products/id/$productId";
+
+
 }
